@@ -1,5 +1,7 @@
 class Solution {
 public:
+    // O(N^2) time
+    // O(1) extra space
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
         int totalRow = matrix.size();
         int totalCol = matrix[0].size();
