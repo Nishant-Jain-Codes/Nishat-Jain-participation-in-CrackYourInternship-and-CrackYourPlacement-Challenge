@@ -15,7 +15,7 @@ public:
         //time O(N)
         //space O(N)
         // create a hashmap and count frequcny of each number and return the one with >1 frequency
-    // method 4 better use the array as hash
+    //method 4 better use the array as hash
         //time O(N)
         //space O(1)
         //modify the array , i.e mark their value as -1 
@@ -31,7 +31,25 @@ public:
             }
             return -1;
         }
+    //method 5 most optmised (2 pointer solution) (slow and fast pointer)
+        //time O(N)
+        //space O(1)
+        //no modification to the array 
+        int optimisedSolution(vector<int>& nums){
+            int slow = 0;
+            int fast = 0;
+            do{ 
+                int slowNext = nums[slow];
+                slow = slowNext;
+                int fastNext = nums[nums[fast]];
+                fast = fastNext;
+                //slow = slow->next;
+                //fast = fast->next->next;
+            }while(nums[slow]!=nums[fast]);
+            return nums[slow];
+        }
     int findDuplicate(vector<int>& nums) {
-    return modificationSolution(nums);
+    // return modificationSolution(nums);
+    return optimisedSolution(nums);
     }
 };
