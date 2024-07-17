@@ -45,8 +45,15 @@ public:
                 fast = fastNext;
                 //slow = slow->next;
                 //fast = fast->next->next;
-            }while(nums[slow]!=nums[fast]);
-            return nums[slow];
+                // cout<<slow<<" "<<fast<<" "<<nums[slow]<<" "<<nums[fast];
+            }while(slow!=fast);
+            int intersectionPoint = slow;
+            int start = 0;
+            while(start!=intersectionPoint){
+                start = nums[start];
+                intersectionPoint = nums[intersectionPoint];
+            }
+            return start;
         }
     int findDuplicate(vector<int>& nums) {
     // return modificationSolution(nums);
