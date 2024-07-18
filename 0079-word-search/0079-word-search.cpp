@@ -1,6 +1,7 @@
 class Solution {
 public:
-    bool helper(vector<vector<char>>& board, int row, int col, int idx,
+// time exponential 
+    bool dfs(vector<vector<char>>& board, int row, int col, int idx,
                 string& word, vector<vector<bool>>& visited) {
         if (visited[row][col])
             return false;
@@ -11,13 +12,13 @@ public:
         bool possible = false;
         visited[row][col] = true;
         if (col - 1 >= 0)
-            possible |= helper(board, row, col - 1, idx + 1, word, visited);
+            possible |= dfs(board, row, col - 1, idx + 1, word, visited);
         if (col + 1 < board[0].size())
-            possible |= helper(board, row, col + 1, idx + 1, word, visited);
+            possible |= dfs(board, row, col + 1, idx + 1, word, visited);
         if (row - 1 >= 0)
-            possible |= helper(board, row - 1, col, idx + 1, word, visited);
+            possible |= dfs(board, row - 1, col, idx + 1, word, visited);
         if (row + 1 < board.size())
-            possible |= helper(board, row + 1, col, idx + 1, word, visited);
+            possible |= dfs(board, row + 1, col, idx + 1, word, visited);
         visited[row][col] = false;
         return possible;
     }
@@ -27,7 +28,7 @@ public:
                 if (board[i][j] == word[0]) {
                     vector<vector<bool>> visited(
                         board.size(), vector<bool>(board[0].size(), false));
-                    if (helper(board, i, j, 0, word, visited))
+                    if (dfs(board, i, j, 0, word, visited))
                         return true;
                 }
             }
