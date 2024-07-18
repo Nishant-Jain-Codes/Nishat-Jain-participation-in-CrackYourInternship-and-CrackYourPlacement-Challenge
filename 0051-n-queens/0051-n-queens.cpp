@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //time complexity : O(N!) 
+    //space compelxity : O(N) ( auxilary stack space)
     void addBoard(vector<string>& board, vector<vector<string>> & output){
         vector<string> newBoard(board);
         output.push_back(newBoard);
@@ -33,7 +35,7 @@ public:
             if(isValid(board,curRow,curCol)){
                 board[curRow][curCol] = 'Q';
                 fillBoard(board,curRow+1,output);
-                board[curRow][curCol] = '.';
+                board[curRow][curCol] = '.'; // back track
             }
         }
     }
