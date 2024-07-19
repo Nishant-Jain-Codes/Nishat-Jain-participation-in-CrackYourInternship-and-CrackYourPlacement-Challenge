@@ -15,7 +15,27 @@ public:
             ans|= recursion(s,start+1,end-2);
         return ans;
     }
+    //other approach 
+    bool isPalindrome(string& s, int start , int end){
+        while(start<end){
+            if(s[start]!=s[end])
+                return false;
+            start++;
+            end--;
+        }
+        return true;
+    }
     bool validPalindrome(string s) {
-        return recursion(s,0,s.length()-1);
+        // return recursion(s,0,s.length()-1);
+        int start = 0;
+        int end = s.length()-1;
+        while(start<end){
+            if(s[start]!=s[end]){
+                return isPalindrome(s,start+1,end) || isPalindrome(s,start,end-1);
+            }
+            start++;
+            end--;
+        }
+        return true;
     }
 };
