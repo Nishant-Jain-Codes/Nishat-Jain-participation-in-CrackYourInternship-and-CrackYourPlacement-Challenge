@@ -10,6 +10,7 @@ public:
         bool ans = false;
         if(s[start+1] == s[end])
             ans |= recursion(s,start+2,end-1);
+        if(ans) return true;
         if(s[start] == s[end-1])
             ans|= recursion(s,start+1,end-2);
         return ans;
