@@ -1,50 +1,57 @@
 class Solution {
 public:
-    int helper(vector<int>& points , int si , int ei , int k ){
-        if(k==0)
+    // Helper function to solve the problem using recursion
+    int helper(vector<int>& points, int start, int end, int k) {
+        if (k == 0)
             return 0;
-        if(si>ei)
+        if (start > end)
             return 0;
-        if(si==ei)
-            return points[si];
-        return max(points[si]+helper(points,si+1,ei,k-1),points[ei]+helper(points,si,ei-1,k-1));
+        if (start == end)
+            return points[start];
+
+        // Choose the maximum between taking points from the start or the end
+        return max(points[start] + helper(points, start + 1, end, k - 1),
+                   points[end] + helper(points, start, end - 1, k - 1));
     }
     
-    //time : O(2^N)
-    //space : O(N) {auxilary stack space}
-    int recursive_solution(vector<int>& cardPoints, int k) {
-        return helper(cardPoints,0,cardPoints.size()-1,k);
+    // Recursive solution to the problem
+    // Time Complexity: O(2^N)
+    // Space Complexity: O(N) {auxiliary stack space}
+    int recursiveSolution(vector<int>& cardPoints, int k) {
+        return helper(cardPoints, 0, cardPoints.size() - 1, k);
     }
-    //time : O(N)
-    // space : O(1)
-    int sliding_window(vector<int>& cardPoints, int k) {
-        int total_sum = 0;
-        for(auto x : cardPoints)
-            total_sum+=x;
-        int sw = 0,ew=0;
+
+    // Sliding window solution to the problem
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    int slidingWindow(vector<int>& cardPoints, int k) {
+        int totalSum = accumulate(cardPoints.begin(), cardPoints.end(), 0);
         int windowSum = 0;
         int answer = INT_MIN;
-        if(k == cardPoints.size())
-            return total_sum;
-        while(ew<cardPoints.size()){
-            windowSum+=cardPoints[ew];
-            if(ew-sw+1 == cardPoints.size()-k){
-              answer = max(answer,total_sum-windowSum);
-              
-            //   ew++;
-            //   windowSum+=cardPoints[ew];
-              windowSum-=cardPoints[sw];
-              sw++;
-              
-            }
-            // else{
-                ew++;
-            // }
+        int n = cardPoints.size();
+
+        // If k equals the size of cardPoints, return total sum
+        if (k == n)
+            return totalSum;
+
+        // Calculate the initial window sum for the first n - k elements
+        for (int i = 0; i < n - k; ++i)
+            windowSum += cardPoints[i];
+
+        // Initialize the answer with the sum outside the initial window
+        answer = totalSum - windowSum;
+
+        // Slide the window from the start to the end
+        for (int i = n - k; i < n; ++i) {
+            windowSum += cardPoints[i] - cardPoints[i - (n - k)];
+            answer = max(answer, totalSum - windowSum);
         }
 
         return answer;
     }
+
+    // Main function to get the maximum score
     int maxScore(vector<int>& cardPoints, int k) {
-        return sliding_window(cardPoints,k);
+        return slidingWindow(cardPoints, k);
     }
 };
