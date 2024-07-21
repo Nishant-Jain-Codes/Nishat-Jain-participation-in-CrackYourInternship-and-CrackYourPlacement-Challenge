@@ -2,6 +2,8 @@
 
 #  #CrackYourInternship Challenge & #CrackYourPlacement Challenge
 
+[Here is my day wise progress trakcer (NOTION)](https://resolute-handspring-f8b.notion.site/45-Day-DSA-Challenge-7541eaa3dddb4f00b7734a4f52e2868e?pvs=4)
+
 ### Overview
 Welcome to my participation repository for the **CrackYourInternship** and **CrackYourPlacement Challenge**! This challenge, organized by Revise with Arsh, is designed to help participants improve their Data Structures and Algorithms (DSA) skills over a period of 45 days, with the added motivation of exciting prizes and opportunities.
 
