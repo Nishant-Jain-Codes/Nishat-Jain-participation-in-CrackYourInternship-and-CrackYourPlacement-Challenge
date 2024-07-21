@@ -10,6 +10,8 @@
  */
 class Solution {
 public:
+    //time : O(N)
+    //space : O(1)
     int getDecimalValue(ListNode* head) {
         int curVal = 0;
         ListNode* temp = head;
