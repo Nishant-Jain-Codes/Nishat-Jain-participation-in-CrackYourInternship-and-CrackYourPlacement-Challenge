@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //time : O(N^2)
+    //space : O(1)
     void rotate(vector<vector<int>>& matrix) {
         //swap along the secondary diagonal  
         //reverse each column
