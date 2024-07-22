@@ -18,6 +18,8 @@ public:
             dfs(image, newRow,newCol, orignalColor , targetColor);
         }
     }
+    //Time : O(M*N)
+    // Space : O(1) + O(N+M) {auxilary stack space}
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
         int m = image.size();
         int n = image[0].size();
@@ -26,12 +28,6 @@ public:
         if(color == image[sr][sc])
             return image;
         dfs(image,sr,sc,image[sr][sc],color);
-        // for(int i = 0 ;i<m;i++){
-        //     for(int j = 0;j<n;j++){
-        //         if(image[i][j]<0)
-        //             image[i][j] = abs(image[i][j]);
-        //     }
-        // }
         return image;
     }
 };
