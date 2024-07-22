@@ -3,7 +3,7 @@ public:
     bool isValidLocation(vector<vector<int>>& image,int orignalColor , int row ,int col){
         int m = image.size();
         int n = image[0].size();
-        if(row<0 || col<0 || row>=m || col>=m || image[row][col]!=orignalColor)
+        if(row<0 || col<0 || row>=m || col>=n || image[row][col]!=orignalColor)
             return false;
         return true;
     }
