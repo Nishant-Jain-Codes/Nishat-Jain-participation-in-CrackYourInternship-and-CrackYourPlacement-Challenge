@@ -11,12 +11,11 @@
  */
 class Solution {
 public:
+    // time  : O(N)
+    // space : O(H)
     TreeNode* invertTree(TreeNode* root) {
         if(!root)
             return root;
-        // TreeNode* temp = root->left;
-        // root->left = root->right;
-        // root->right = root->left;
         TreeNode* rightRec = invertTree(root->right);
         TreeNode* leftRec = invertTree(root->left);
         root->left = rightRec;
