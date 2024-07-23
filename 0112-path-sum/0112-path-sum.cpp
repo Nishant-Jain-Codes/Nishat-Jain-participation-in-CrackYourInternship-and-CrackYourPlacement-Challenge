@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    // Time : O(N)
+    // Space : O(H)
     bool helper(TreeNode* root,int targetSum ,int curSum){
         if(!root)
             return false;
