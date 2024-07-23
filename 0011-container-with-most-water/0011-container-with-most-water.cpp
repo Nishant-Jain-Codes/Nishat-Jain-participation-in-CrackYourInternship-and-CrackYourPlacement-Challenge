@@ -2,6 +2,7 @@ class Solution {
 public:
     //greedy
     //time O(N)
+    //space O(1)
     int maxArea(vector<int>& height) {
         int l = 0;
         int r = height.size()-1;
