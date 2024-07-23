@@ -28,8 +28,7 @@ public:
         for(int i = 0;i<nums.size();i++){
             if(curMaxDest<i)
                 return false;
-            curMaxDest = max(curMaxDest , nums[i]+i);       if(curMaxDest>=nums.size())
-                return true;
+            curMaxDest = max(curMaxDest , nums[i]+i);       
         }
         return true;
     }
