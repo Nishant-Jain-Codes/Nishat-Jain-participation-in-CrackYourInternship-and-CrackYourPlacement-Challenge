@@ -17,6 +17,8 @@ public:
             temp=temp->next;
         }
     }
+    //time : O(M+N)
+    //space : O(M+N)
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         stack<int> sfl1;
         stack<int>sfl2;
