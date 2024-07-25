@@ -1,5 +1,7 @@
 class Solution {
 public:
+    // time : O(N^2)
+    // space : O(1)
     vector<vector<int>> threeSum(vector<int>& nums) {
         sort(nums.begin(),nums.end());
         int i = 0;
