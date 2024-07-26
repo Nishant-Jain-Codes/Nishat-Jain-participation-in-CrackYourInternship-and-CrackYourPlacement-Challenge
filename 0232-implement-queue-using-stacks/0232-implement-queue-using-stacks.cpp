@@ -15,16 +15,14 @@ public:
     }
     
     int pop() {
-        if(s2.empty())
-            translateStacks();
-        if(s2.empty()){
+        if (peek()==-1)
             return -1;
-        }
         else{
-            int val = s2.top();
+            int ans = peek();
             s2.pop();
-            return val;
+            return ans;
         }
+
     }
     
     int peek() {
