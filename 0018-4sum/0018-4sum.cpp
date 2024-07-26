@@ -2,10 +2,11 @@ class Solution {
 public:
     // time : O(N^3)
     // space : O(1)
-    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+    vector<vector<int>> fourSum(vector<int>& nums, int t) {
         if(nums.size()<=3)
             return {};
         vector<vector<int>> answer;
+        long long int target = t;
         sort(nums.begin(),nums.end());
         for(int i =0;i<nums.size()-3;i++){
             if(i>0 && nums[i]==nums[i-1])
@@ -18,7 +19,7 @@ public:
                 int ei = nums.size()-1;
                 target=target-nums[j];
                 while(si<ei){
-                    int sum =+nums[si]+nums[ei];
+                    long long int sum =+nums[si]+nums[ei];
                     if(sum==target){
                         answer.push_back({nums[i],nums[j],nums[si],nums[ei]});
                         if(nums[si]==nums[ei])
