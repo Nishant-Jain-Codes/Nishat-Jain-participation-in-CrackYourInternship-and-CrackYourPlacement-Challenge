@@ -10,6 +10,9 @@
  */
 class Solution {
 public:
+// single pass 
+//time O(N)
+//space O(N) stack space
     ListNode* helper(ListNode* head , int n , int &curN){
         if(!head)
             {
