@@ -20,7 +20,7 @@ public:
         ListNode * evenT = head->next;
         evenH->next = evenT;
         // head=head->next->next;
-        while(oddT && oddT->next){
+        while(evenT && evenT->next){
             oddT->next =evenT->next;
             oddT= oddT->next;
             // if(!oddT)
