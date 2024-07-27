@@ -10,6 +10,8 @@
  */
 class Solution {
 public:
+// time : O(N)
+// space : O(1)
     ListNode* oddEvenList(ListNode* head) {
         if(!head||!head->next||!head->next->next)
             return head;
@@ -19,16 +21,11 @@ public:
         oddH->next = oddT;
         ListNode * evenT = head->next;
         evenH->next = evenT;
-        // head=head->next->next;
         while(evenT && evenT->next){
             oddT->next =evenT->next;
             oddT= oddT->next;
-            // if(!oddT)
-            //     break;
             evenT->next = oddT->next;
             evenT=evenT->next;
-            // if(!evenT)
-            //     break;
         }
         oddT->next = evenH->next;
         if(evenT)
