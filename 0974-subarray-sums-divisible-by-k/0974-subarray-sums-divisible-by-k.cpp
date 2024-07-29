@@ -31,10 +31,11 @@ public:
         for(int i = 0;i<nums.size();i++){
             curSum+=nums[i];
             // remove subarray with the same remainder i.e curSum%k , so that after removing we get 0 remainder , thus the resultant subarray will be a factor of k 
-            int remove = (curSum)%k; 
-            cout<<remove<<" ";
-            curCount+=map[remove];
-            map[curSum%k]++;
+            //also did extra + k ) %k to make sure every search query is in range [0,k)
+            int mod =( (curSum)%k + k )% k; 
+            cout<<mod<<" ";
+            curCount+=map[mod];
+            map[mod]++;
         }
         cout<<endl;
         for(auto [f,s] : map){
