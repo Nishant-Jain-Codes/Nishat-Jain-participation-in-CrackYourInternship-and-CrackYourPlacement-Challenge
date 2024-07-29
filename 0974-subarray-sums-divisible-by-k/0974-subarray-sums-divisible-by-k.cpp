@@ -22,9 +22,9 @@ public:
         return ans;
     }
     // time : O(N)
-    // space : O(N)
+    // space : O(K)
     int optimised(vector<int>& nums,int k){
-        unordered_map<int,int> map;
+        unordered_map<int,int> map;//<remainder , freq>
         int curSum = 0;
         int curCount = 0;
         map[0]=1;
