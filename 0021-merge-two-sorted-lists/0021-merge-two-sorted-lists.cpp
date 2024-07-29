@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+    ListNode* iterative(ListNode* list1, ListNode* list2){
         ListNode* dummyh = new ListNode(-1);
         ListNode * dummyt = dummyh;
         while(list1 && list2){
@@ -37,5 +37,17 @@ public:
             dummyt=dummyt->next;
         }
         return dummyh->next;
+
+    }
+    ListNode* recursive(ListNode* list1, ListNode* list2) {
+        if(!list1||!list2)
+            return list1? list1: list2;
+        if(list1->val>list2->val)
+            swap(list1,list2);
+        list1->next = recursive(list1->next,list2);
+        return list1;
+    }
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        return recursive(list1,list2);
     }
 };
