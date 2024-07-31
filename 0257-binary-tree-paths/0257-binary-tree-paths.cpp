@@ -18,9 +18,9 @@ public:
             allPaths.push_back(addPath);
             return ;
         }
-        
-        // curPath.push_back(root->val);
-        curPath+=to_string(root->val);
+        string rootVal = to_string(root->val);
+        string prevString = curPath;
+        curPath+=rootVal;
         if(!root->left && !root->right)
             helper(root->left,allPaths,curPath);
         if(root->left){
@@ -37,7 +37,7 @@ public:
             curPath.pop_back();
             curPath.pop_back();
         }
-        curPath.pop_back();
+        curPath = prevString;
     }
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string> allPaths;
