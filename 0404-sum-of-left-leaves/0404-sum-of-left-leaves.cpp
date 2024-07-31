@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    //time : O(N)
+    //space : O(N)
     int helper(TreeNode* root,char dir){
         if(!root)
             return 0;
