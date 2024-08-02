@@ -1,26 +1,34 @@
 class Solution {
 public:
-    int close(vector<int>& nums , int k)
-    {
-        int si = 0;
-        int ei = nums.size()-1;
-        while(si<=ei && nums[si]!=k)
-            si++;
-        while(ei>=si && nums[ei]!=k)
-            ei--;
+    int sw(vector<int>& nums,int k ){
         int count = 0;
-        int l =  si;
-        int r = ei;
-        while(l<=r){
-            if(nums[l] == k) 
+        for(auto &x : nums){
+            if(x==k)
                 count++;
-            l++;
         }
-        int minDiff = ei-si + 1 - count;
-        cout<<si<<" "<<ei<<" for -> "<<k<<" "<<minDiff<<endl;
-        return minDiff;
+        int kCount = 0;
+        int notKCount = 0;
+        for(int i =0;i<count;i++){
+            if(nums[i]==k)
+                kCount++;
+            else
+                notKCount++;
+        }
+        int ans = notKCount;
+        for(int i = count;i<nums.size();i++){
+            if(nums[i]==k)
+                kCount++;
+            else
+                notKCount++;
+            if(nums[i-count] == k)
+                kCount--;
+            else
+                notKCount--;
+            ans = min(ans,notKCount);
+        }
+        return ans;
     }
     int minSwaps(vector<int>& nums) {
-        return min(close(nums,0),close(nums,1));
+        return min(sw(nums,1),sw(nums,0));
     }
 };
