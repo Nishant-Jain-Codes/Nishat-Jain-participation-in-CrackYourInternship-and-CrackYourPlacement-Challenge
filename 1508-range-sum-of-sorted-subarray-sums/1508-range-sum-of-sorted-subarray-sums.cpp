@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //time : O(N^2 * log N)
+    //space : O(N^2)
     int rangeSum(vector<int>& nums, int n, int left, int right) {
         vector<int> sums ;
         for(int i = 0;i<nums.size();i++){
