@@ -9,19 +9,19 @@ public:
                 sums.push_back(curSum);
             }
         }
-        for(auto & x : sums)
-            cout<<x<<" ";
-        cout<<endl;
+        // for(auto & x : sums)
+        //     cout<<x<<" ";
+        // cout<<endl;
         sort(sums.begin(),sums.end());
         long long int ans =0 ;
         int mod = 1e9 + 7;
-        for(auto & x : sums)
-            cout<<x<<" ";
-        cout<<endl;
+        // for(auto & x : sums)
+        //     cout<<x<<" ";
+        // cout<<endl;
         // int ans = 0;
         for(int i = left-1;i<right;i++)
         {
-            cout<<sums[i]<<" ";
+            // cout<<sums[i]<<" ";
             ans = (ans+sums[i])%mod;
         }
         return ans;
