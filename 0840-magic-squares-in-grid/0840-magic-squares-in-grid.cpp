@@ -14,7 +14,7 @@ public:
                     int sum = 0;
                     for(int i = c;i<c+3;i++){
                         s.insert(grid[r+k][i]);
-                        if(grid[r+k][i]>10)
+                        if(grid[r+k][i]>9 || grid[r+k][i]<1)
                             flag = true;
                         sum+=grid[r+k][i];
                     }
