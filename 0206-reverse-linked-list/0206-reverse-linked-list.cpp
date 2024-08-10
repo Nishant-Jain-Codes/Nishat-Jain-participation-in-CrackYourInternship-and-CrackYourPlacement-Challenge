@@ -19,20 +19,19 @@ class Solution {
         return newHead;
     }
     ListNode* reverseListIterative(ListNode* head) {
-        if(!head || !head->next)
-            return head;
-        ListNode* prev = NULL;
-        ListNode* curr = head;
-        ListNode* nextt = head->next;
-        while(curr){
-            curr->next = prev;
-            prev = curr;
-            curr = nextt;
-            if(nextt)
-                nextt = nextt->next;
-        }
-        return prev;
+    ListNode* prev = nullptr;
+    ListNode* curr = head;
+    
+    while (curr) {
+        ListNode* nextNode = curr->next; // Store the next node
+        curr->next = prev;               // Reverse the link
+        prev = curr;                     // Move prev forward
+        curr = nextNode;                 // Move curr forward
     }
+    
+    return prev;
+}
+
 public:
     ListNode* reverseList(ListNode* head) {
         return reverseListIterative(head);
