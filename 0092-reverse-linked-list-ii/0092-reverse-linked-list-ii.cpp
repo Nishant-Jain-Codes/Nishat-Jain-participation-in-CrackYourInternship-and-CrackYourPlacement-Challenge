@@ -10,11 +10,11 @@
  */
 class Solution {
 public:
+    //time : O(N)
+    //space : O(N) 
     ListNode* reverseBetween(ListNode* head, int left, int right) {
         ListNode dummy(-1,head);
         ListNode* tail = &dummy;
-        // tail->next = head;
-        // tail=tail->next;
         int curLoc = 1;
         while(tail->next && curLoc!=left){
             tail=tail->next;
