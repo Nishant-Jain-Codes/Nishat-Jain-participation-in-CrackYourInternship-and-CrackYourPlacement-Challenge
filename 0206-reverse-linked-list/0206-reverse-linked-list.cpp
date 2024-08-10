@@ -9,8 +9,7 @@
  * };
  */
 class Solution {
-public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode* reverseListRecursive(ListNode* head) {
         if(!head || !head->next)
             return head;
         ListNode* tail = head->next;
@@ -18,5 +17,24 @@ public:
         tail->next = head;
         head->next = NULL;
         return newHead;
+    }
+    ListNode* reverseListIterative(ListNode* head) {
+        if(!head || !head->next)
+            return head;
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+        ListNode* nextt = head->next;
+        while(curr){
+            curr->next = prev;
+            prev = curr;
+            curr = nextt;
+            if(nextt)
+                nextt = nextt->next;
+        }
+        return prev;
+    }
+public:
+    ListNode* reverseList(ListNode* head) {
+        return reverseListIterative(head);
     }
 };
