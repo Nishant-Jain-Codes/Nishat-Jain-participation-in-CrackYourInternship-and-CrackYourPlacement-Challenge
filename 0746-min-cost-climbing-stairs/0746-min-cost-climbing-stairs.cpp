@@ -1,8 +1,13 @@
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
-        vector<int> dp(cost.size()+1,-1);
-      return min(recursion(0,cost,dp),recursion(1,cost,dp)) ; 
+        int n = cost.size();
+        vector<int> dp(n+2,0);
+        for(int idx = n-1;idx>=0;idx--){
+            dp[idx] = min(dp[idx+1],dp[idx+2]) + cost[idx];
+        }
+        return min(dp[0],dp[1]);
+
     }
 private: 
     int recursion(int idx , vector<int>& cost , vector<int> &dp){
