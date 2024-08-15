@@ -1,12 +1,25 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
+        return iterativeOptimised(nums);
         return iterative(nums);
         int n = nums.size();
         vector<vector<int>> dp(n+1,vector<int>(2,-1));
         return recursion(0,true,nums,dp);
     }
 private:
+    //time : O(2*N)
+    //space : O(1)
+    int iterativeOptimised(vector<int>& nums){
+        int prev_1 = 0;//dp[i-1]
+        int prev_2 = 0;//dp[i-1]
+        for(int i = 0;i<nums.size();i++){
+            int dp = max(prev_1 , prev_2 + nums[i]);
+            prev_2 = prev_1;
+            prev_1 = dp;
+        }
+        return prev_1;
+    }
     //time : O(2*N)
     //space : O(2*N)
     int iterative(vector<int>& nums){
