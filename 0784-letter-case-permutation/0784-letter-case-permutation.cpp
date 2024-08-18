@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //time : O(2^n)
+    //space : O(2^n)
     vector<string> letterCasePermutation(string s) {
         vector<string> allWays;
         dfs(0,s,allWays);
