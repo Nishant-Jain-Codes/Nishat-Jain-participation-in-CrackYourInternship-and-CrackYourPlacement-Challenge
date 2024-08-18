@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //time : O(n*2^n)
+    //space : O(n*2^n)
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
         vector<vector<int>> allPaths;
         vector<int> curPath ;
