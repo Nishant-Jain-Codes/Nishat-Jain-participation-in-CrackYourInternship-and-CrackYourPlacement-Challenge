@@ -1,49 +1,26 @@
 class Solution {
 public:
     int totalNQueens(int n) {
-        vector<vector<int>> board(n,vector<int>(n,0));
-        return dfs(0,board);
+        vector<int> cols(n, -1);  // Store the column positions of queens
+        return dfs(0, cols, n);
     }
-private : 
-    int dfs(int row , vector<vector<int>> &board){
-        if(row == board.size())
-            return 1;
+private:
+    int dfs(int row, vector<int>& cols, int n) {
+        if (row == n) return 1;
         int ways = 0;
-        for(int c = 0;c<board[0].size();c++){
-            if(isValid(row,c,board)){
-                board[row][c] = 1;
-                ways+= dfs(row+1,board);
-                board[row][c] = 0;
+        for (int c = 0; c < n; ++c) {
+            if (isValid(row, c, cols)) {
+                cols[row] = c;
+                ways += dfs(row + 1, cols, n);
+                cols[row] = -1;  // Backtrack
             }
         }
         return ways;
     }
-    bool isValid(int r , int c , vector<vector<int>> & board){
-        //checking for row validity ( maybe redundant )
-        for(int col = 0 ; col<board[0].size();col++){
-            if(board[r][col])
-                return false;
-        }
-        //col
-        for(int row = 0; row<board.size();row++){
-            if(board[row][c])
-                return false;
-        }
-        
-        for(int i = r ,j=c;i>=0 && j<board[0].size();i--,j++){
-            if(board[i][j])
-                return false;
-        }
-        for(int i = r ,j=c;i>=0 && j>=0;i--,j--){
-            if(board[i][j])
-                return false;
-        }
-        for(int i = r ,j=c;i<board.size() && j<board[0].size();i++,j++){
-            if(board[i][j])
-                return false;
-        }
-        for(int i = r ,j=c;i<board.size() && j>=0;i++,j--){
-            if(board[i][j])
+    
+    bool isValid(int r, int c, vector<int>& cols) {
+        for (int i = 0; i < r; ++i) {
+            if (cols[i] == c || abs(cols[i] - c) == abs(i - r))
                 return false;
         }
         return true;
