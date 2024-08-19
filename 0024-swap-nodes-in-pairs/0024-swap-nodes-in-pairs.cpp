@@ -10,13 +10,11 @@
  */
 class Solution {
 public:
+    //time : O(N)
+    //space : O(1)
     ListNode* swapPairs(ListNode* head) {
         if(!head||!head->next)
             return head;
-        //if even
-        // dt -> next = nextN;
-        // cur->next = nextN->next;
-        // nextN -> net = cur;
         ListNode* curNode = head;
         ListNode* nextNode = head->next; 
         ListNode dummy(-1);
