@@ -21,6 +21,8 @@
  */
 class Solution {
 public:
+    //time : O(N)
+    //space : O(N)
     TreeNode* sortedListToBST(ListNode* head) {
         if(!head)
             return NULL;
