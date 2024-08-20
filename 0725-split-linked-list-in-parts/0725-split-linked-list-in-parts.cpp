@@ -14,7 +14,6 @@ public:
         int len = 0;
         for(ListNode* temp = head; temp!=NULL ; temp=temp->next)
             len++;
-        // int sublen = len%k==0 ? len/k : 1+(len/k);
         
         vector<ListNode*> answer;
         for(int i = 0 ; i < k ; i++){
