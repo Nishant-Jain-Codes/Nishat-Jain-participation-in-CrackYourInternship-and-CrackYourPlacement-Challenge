@@ -10,9 +10,16 @@
  */
 class Solution {
 public:
+    ListNode* method2(ListNode* head){
+        if(!head||!head->next)
+            return head;
+        head->next = method2(head->next);
+        return head->next!=NULL&&head->val<head->next->val?head->next:head;
+    }
     //time :O(N)
     //space :O(N)
     ListNode* removeNodes(ListNode* head) {
+        return method2(head);
         vector<int> suffix;
         int curMax = 0;
         populateSuffix(head,suffix,curMax);
