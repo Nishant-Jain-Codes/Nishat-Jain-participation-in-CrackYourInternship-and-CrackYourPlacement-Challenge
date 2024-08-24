@@ -7,8 +7,8 @@ public:
         int wordEnd = r;
         while(r>=0 &&s[r]!=' ' )
             r--;
-        if(r<0)
-            r=0;
+        // if(r<0)
+        //     r=0;
         return wordEnd-r;
     }
 };
