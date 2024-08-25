@@ -5,13 +5,19 @@ public:
         int n = grid[0].size();
         vector<vector<int>> minTime(m,vector<int>(n,INT_MAX));
         vector<pair<int,int>> dir = {{0,1},{0,-1},{1,0},{-1,0}};
+        vector<vector<int>> visited(m,vector<int>(n,0));
+        queue<vector<int>> q;
         for(int i = 0;i<m;i++){
-            for(int j = 0;j<n;j++){
-                if(grid[i][j]==2){
-                    vector<vector<int>> visited(m,vector<int>(n,0));
-                    queue<vector<int>> q;
-                    q.push({i,j,0});
-                    visited[i][j]=1;
+            for(int j = 0 ; j<n;j++){
+                if(grid[i][j]==2 )
+                    {
+                        q.push({i,j,0});
+                        visited[i][j]=1;
+                    }
+
+            }
+        }
+        
                     while(!q.empty()){
                         int x = q.front()[0];
                         int y = q.front()[1];
@@ -27,18 +33,17 @@ public:
                             }
                         }
                     }
-                }
-            }
-        }
+                
+            
+        
         int ans = 0;
         for(int i = 0;i<m;i++){
             for(int j = 0 ; j<n;j++){
-                if(grid[i][j]!=0)
-                    if(minTime[i][j]==INT_MAX)
+                if(grid[i][j]==1 )
+                    if(!visited[i][j])
                         return -1;
                     else 
                         ans = max(minTime[i][j],ans);
-
             }
         }
         return ans;
