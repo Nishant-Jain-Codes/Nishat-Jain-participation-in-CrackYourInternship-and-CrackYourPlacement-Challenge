@@ -1,7 +1,7 @@
 class Solution {
 public:
     int chalkReplacer(vector<int>& chalk, int k) {
-        int useInOneItration = 0;
+        long long useInOneItration = 0;
         for(auto & x : chalk)
             useInOneItration += x;
         if(k>=useInOneItration)
